@@ -1,23 +1,25 @@
 import logo from './logo.svg';
 import './App.css';
+import{getResults} from "./Services";
+import axios from "axios";
+import SearchPage from "./View/SearchPage";
+
+
 
 function App() {
+    //         const url='https://api.twitter.com/1.1/search/tweets.json';
+    // const token='AAAAAAAAAAAAAAAAAAAAALq%2BJQEAAAAAWazLr8OF4fqSc40DomDUvQ97KKc%3Dj6GTYzE6kA90QkEnH0PAxEINENX8cLMk8h8Rh1WyouV9xAiy1x'
+    // axios.get(url,
+    //     { headers: { Authorization: `Bearer ${token}` } }
+    //    ).then(function (response) {
+    //     // handle success
+    //     console.log(response);
+    // })
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <SearchPage/>
+        {/*{console.log(getResults())}*/}
+
     </div>
   );
 }
