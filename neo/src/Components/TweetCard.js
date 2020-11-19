@@ -42,16 +42,22 @@ const useStyles = makeStyles((theme) => ({
     main: {
         maxHeight: '600px',
         overflowY: 'scroll'
+    },
+    cardHeader:{
+        margin:'0px',
+        paddingBottom:'1px'
+    },
+    cardContent:{
+        margin:'0px',
+        paddingBottom:'1px'
     }
 }));
 
 const TweetCard = props => {
     const classes = useStyles();
-    const [expanded, setExpanded] = React.useState(false);
 
-    const handleExpandClick = () => {
-        setExpanded(!expanded);
-    };
+
+
 
     //take the post data and store in content
     const content = props.post;
@@ -69,14 +75,6 @@ const TweetCard = props => {
         }
     }
 
-    // const urlify = (text) =>{
-    //     var urlRegex = /(https?:\/\/[^\s]+)/g;
-    //     // return text.replace(urlRegex, function(url) {
-    //     //     return '<a href="' + url + '">' + url + '</a>';
-    //     // })
-    //
-    //     return text.replace(urlRegex, '<a href="$1">$1</a>')
-    // }
 
 
 
@@ -95,8 +93,9 @@ const TweetCard = props => {
 
                                 title={content.userScreenName}
                                 subheader={content.userName}
+                                className={classes.cardHeader}
                             />
-                            <CardContent>
+                            <CardContent className={classes.cardContent}>
                                 <p>
                                     {content.text }
                                 </p>
@@ -104,20 +103,15 @@ const TweetCard = props => {
                             </CardContent>
 
                             <CardActions disableSpacing>
-                                <IconButton aria-label="add to favorites">
-                                    <FavoriteIcon/> {content.likes}
+                                <IconButton  style={{color:'red'}}>
+                                    <FavoriteIcon  />
                                 </IconButton>
+                                {content.likes}
 
-                                <IconButton
-                                    className={clsx(classes.expand, {
-                                        [classes.expandOpen]: expanded,
-                                    })}
-                                    onClick={handleExpandClick}
-                                    aria-expanded={expanded}
-                                    aria-label="show more"
-                                >
-                                   <RepeatIcon/> {content.retweetCount}
+                                <IconButton style={{color:'blue'}}>
+                                   <RepeatIcon/>
                                 </IconButton>
+                                {content.retweetCount}
                             </CardActions>
                         </Card>
                     ) : <div> </div>}
