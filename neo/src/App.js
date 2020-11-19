@@ -1,7 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
 import{getResults} from "./Services";
-import axios from "axios";
 import SearchPage from "./View/SearchPage";
 
 
